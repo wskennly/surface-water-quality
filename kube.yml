@@ -1,0 +1,91 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-4.3.1
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    io.kubernetes.cri-o.ContainerType/Django-podified: container
+    io.kubernetes.cri-o.ContainerType/Postgres-podified: container
+    io.kubernetes.cri-o.SandboxID/Django-podified: aa8ce9762adf8b1a2928b6c17685322677f0bacb813d1b7482604132ec33403
+    io.kubernetes.cri-o.SandboxID/Postgres-podified: aa8ce9762adf8b1a2928b6c17685322677f0bacb813d1b7482604132ec33403
+    io.podman.annotations.autoremove/Django-podified: "FALSE"
+    io.podman.annotations.autoremove/Postgres-podified: "FALSE"
+    io.podman.annotations.init/Django-podified: "FALSE"
+    io.podman.annotations.init/Postgres-podified: "FALSE"
+    io.podman.annotations.privileged/Django-podified: "FALSE"
+    io.podman.annotations.privileged/Postgres-podified: "FALSE"
+    io.podman.annotations.publish-all/Django-podified: "FALSE"
+    io.podman.annotations.publish-all/Postgres-podified: "FALSE"
+  creationTimestamp: "2022-12-13T02:55:08Z"
+  labels:
+    app: Plant-Site
+  name: Plant-Site
+  
+spec:
+  automountServiceAccountToken: false
+  enableServiceLinks: false
+  restartPolicy: Never
+  
+  volumes:
+  - name: Postgres
+    persistentVolumeClaim:
+      claimName: Postgres
+  - name: Django
+    persistentVolumeClaim:
+      claimName: Django
+    hostPath: 
+      path: ./test/djangoProject/
+      
+  containers:
+  - name: Postgres
+    image: docker.io/library/postgres:latest
+    env:
+    - name: HOSTNAME
+      value: 1372e00a935c
+    - name: HOME
+      value: /root
+    - name: POSTGRES_PASSWORD
+      value: mySecurePassword
+    ports:
+    - containerPort: 5432
+      hostPort: 5432
+    resources: {}
+    securityContext:
+      readOnlyRootFilesystem: false
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /var/lib/postgresql/data
+      name: Postgres
+      
+  - name: Django
+    image: docker.io/library/django:latest
+    command: ["/bin/sh"]
+    args: ["-c", "cd /djangoProject && python manage.py runserver 0.0.0.0:8000"]
+    env:
+    - name: HOME
+      value: /root
+    - name: HOSTNAME
+      value: b27f1b0463df
+    resources: {}
+    tty: true
+    ports:
+    - containerPort: 8000
+      hostPort: 8000
+    securityContext:
+      readOnlyRootFilesystem: false
+      capabilities:
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+    volumeMounts:
+    - mountPath: /djangoProject
+      name: Django
+        
+status: {}
