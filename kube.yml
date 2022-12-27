@@ -35,8 +35,6 @@ spec:
   - name: Django
     persistentVolumeClaim:
       claimName: Django
-    hostPath: 
-      path: ./djangoProject/
       
   containers:
   - name: Postgres
@@ -66,7 +64,7 @@ spec:
   - name: Django
     image: docker.io/library/django:latest
     command: ["/bin/sh"]
-    args: ["-c", "mkdir -p /djangoProject && cd /djangoProject && python manage.py runserver 0.0.0.0:8000"]
+    args: ["-c", "mkdir -p /project/djangoProject && cd /project/djangoProject && python manage.py runserver 0.0.0.0:8000"]
     env:
     - name: HOME
       value: /root
@@ -85,7 +83,7 @@ spec:
         - CAP_NET_RAW
         - CAP_AUDIT_WRITE
     volumeMounts:
-    - mountPath: /djangoProject
+    - mountPath: /project
       name: Django
         
 status: {}
