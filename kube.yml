@@ -32,9 +32,9 @@ spec:
   - name: Postgres
     persistentVolumeClaim:
       claimName: Postgres
-  - name: Django
+  - name: Project
     persistentVolumeClaim:
-      claimName: Django
+      claimName: Project
       
   containers:
   - name: Postgres
@@ -84,6 +84,6 @@ spec:
         - CAP_AUDIT_WRITE
     volumeMounts:
     - mountPath: /project
-      name: Django
+      name: Project
         
 status: {}
