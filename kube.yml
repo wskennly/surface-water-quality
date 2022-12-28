@@ -20,8 +20,8 @@ metadata:
     io.podman.annotations.publish-all/Postgres-podified: "FALSE"
   creationTimestamp: "2022-12-13T02:55:08Z"
   labels:
-    app: Plant-Site
-  name: Plant-Site
+    app: Surface-water-quality
+  name: Surface-water-quality
   
 spec:
   automountServiceAccountToken: false
