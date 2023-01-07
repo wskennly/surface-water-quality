@@ -1,1 +1,7 @@
 !.gitignore
+
+*/__pyCache__/*
+__pyCache__/*
+
+*/__pycache__/*
+__pycache__/*
