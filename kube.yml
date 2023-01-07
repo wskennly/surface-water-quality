@@ -60,6 +60,8 @@ spec:
     volumeMounts:
     - mountPath: /var/lib/postgresql/data
       name: Postgres
+    - mountPath: /project
+      name: Project
       
   - name: Django
     image: docker.io/library/django:latest
