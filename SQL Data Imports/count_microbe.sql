@@ -97,7 +97,7 @@ copy count_microbe.amc_cellCounts(
 from '/project/datastuff/count-microbe/amc_cellCounts.csv'
 delimiter ',' csv header;
 
-create table if not exists amc_fieldCellCounts(
+create table if not exists count_microbe.amc_fieldCellCounts(
 "uid" text
 ,"domainID" text
 ,"siteID" text
@@ -117,7 +117,7 @@ create table if not exists amc_fieldCellCounts(
 );
 
 
-copy  amc_fieldCellCounts(
+copy  count_microbe.amc_fieldCellCounts(
 "uid"
 ,"domainID"
 ,"siteID"
