@@ -207,9 +207,6 @@ from
 '/project/datastuff/dissolved_gases/sdg_fieldSuperParent.csv'
 delimiter ',' csv header;
 
-select * from dissolved_gases.sdg_externallabsummarydata se 
-
---
 create table if not exists dissolved_gases.sdg_externalLabData(
 "uid" text
 ,"domainID" text
@@ -246,11 +243,6 @@ create table if not exists dissolved_gases.sdg_externalLabData(
 ,"publicationDate" text
 ,"release" text
 );
-
-alter table dissolved_gases.sdg_externalLabData
-ALTER COLUMN "analysisDate" DROP NOT NULL
-
-drop dissolved_gases.sdg_externalLabData
 
 copy dissolved_gases.sdg_externalLabData(
 "uid"
@@ -291,8 +283,6 @@ copy dissolved_gases.sdg_externalLabData(
 from
 '/project/datastuff/dissolved_gases/sdg_externalLabData - Copy.csv' 
 delimiter ',' csv header;
-
-truncate dissolved_gases.sdg_externalLabData
 
 create table if not exists dissolved_gases.sdg_externalLabSummaryData(
 "uid" text
