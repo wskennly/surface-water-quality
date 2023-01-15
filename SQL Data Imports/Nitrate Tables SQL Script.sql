@@ -3,7 +3,7 @@ create schema if not exists nitrate;
 
 create table if not exists nitrate.main_table (
 "domainID" text
-,"vsiteID" text
+,"siteID" text
 ,"horizontalPosition" numeric
 ,"verticalPosition" numeric
 ,"startDateTime" timestamp
