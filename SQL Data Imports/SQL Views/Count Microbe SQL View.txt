@@ -1,3 +1,17 @@
+create or replace view masterCellCount as 
+select 
+ac."domainID"
+,ac."siteID"
+,ac."collectDate"
+,ac."cellCountSampleID" as "acSampleID"
+,ac."rawMicrobialAbundance"
+,fcc."cellCountSampleID" as "fccSampleID"
+,fcc."cellCountSampleVolume"
+,fcc."cellCountPreservantVolume"  
+,((ac."rawMicrobialAbundance" * (fcc."cellCountSampleVolume" + fcc."cellCountPreservantVolume") / fcc."cellCountSampleVolume")) as "microbialAbundancePerMl"
+from count_microbe.amc_fieldCellCounts fcc 
+full join count_microbe.amc_cellcounts ac on fcc."cellCountSampleID" = ac."cellCountSampleID";
+
 create or replace view countmicrobe2018 as 
 select 
 date_trunc('month', m."collectDate") as month,
