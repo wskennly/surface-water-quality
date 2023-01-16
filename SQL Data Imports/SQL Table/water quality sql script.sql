@@ -2,7 +2,7 @@ create schema if not exists water_quality;
 
 create table if not exists  water_quality.maintable (
 "domainID" text
-,"vsiteID" text
+,"siteID" text
 ,"horizontalPosition" numeric
 ,"verticalPosition" numeric
 ,"startDateTime" timestamp
@@ -156,7 +156,7 @@ create table if not exists  water_quality.maintable (
 
 copy water_quality.maintable(
 "domainID" 
-,"vsiteID" 
+,"siteID" 
 ,"horizontalPosition" 
 ,"verticalPosition" 
 ,"startDateTime" 

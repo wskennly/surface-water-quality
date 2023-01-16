@@ -1,19 +1,19 @@
-create schema if not exists temperature;
+create schema if not exists nitrate;
 
-create table if not exists temperature.main_table(
+create table if not exists nitrate.main_table (
 "domainID" text
 ,"siteID" text
 ,"horizontalPosition" numeric
 ,"verticalPosition" numeric
 ,"startDateTime" timestamp
 ,"endDateTime" timestamp
-,"surfWaterTempMean" numeric
-,"surfWaterTempMinimum" numeric
-,"surfWaterTempMaximum" numeric
-,"surfWaterTempVariance" numeric
-,"surfWaterTempNumPts" numeric
-,"surfWaterTempExpUncert" numeric
-,"surfWaterTempStdErMean" numeric
+,"surfWaterNitrateMean" numeric
+,"surfWaterNitrateMinimum" numeric
+,"surfWaterNitrateMaximum" numeric
+,"surfWaterNitrateVariance" numeric
+,"surfWaterNitrateNumPts" numeric
+,"surfWaterNitrateExpUncert" numeric
+,"surfWaterNitrateStdErMean" numeric
 ,"rangeFailQM" numeric
 ,"rangePassQM" numeric
 ,"rangeNAQM" numeric
@@ -32,6 +32,12 @@ create table if not exists temperature.main_table(
 ,"spikeFailQM" numeric
 ,"spikePassQM" numeric
 ,"spikeNAQM" numeric
+,"nitrateInternalHumidityPassQM" numeric
+,"nitrateInternalHumidityFailQM" numeric
+,"nitrateInternalHumidityNAQM" numeric
+,"nitrateLightDarkSpectralRatioPassQM" numeric
+,"nitrateLightDarkSpectralRatioFailQM" numeric
+,"nitrateLightDarkSpectralRatioNAQM" numeric
 ,"validCalFailQM" numeric
 ,"validCalPassQM" numeric
 ,"validCalNAQM" numeric
@@ -43,22 +49,20 @@ create table if not exists temperature.main_table(
 ,"release" text
 );
 
-
-
-copy temperature.main_table (
+copy nitrate.main_table (
 "domainID"
 ,"siteID"
 ,"horizontalPosition"
 ,"verticalPosition"
 ,"startDateTime"
 ,"endDateTime"
-,"surfWaterTempMean"
-,"surfWaterTempMinimum"
-,"surfWaterTempMaximum"
-,"surfWaterTempVariance"
-,"surfWaterTempNumPts"
-,"surfWaterTempExpUncert"
-,"surfWaterTempStdErMean"
+,"surfWaterNitrateMean"
+,"surfWaterNitrateMinimum"
+,"surfWaterNitrateMaximum"
+,"surfWaterNitrateVariance"
+,"surfWaterNitrateNumPts"
+,"surfWaterNitrateExpUncert"
+,"surfWaterNitrateStdErMean"
 ,"rangeFailQM"
 ,"rangePassQM"
 ,"rangeNAQM"
@@ -77,6 +81,12 @@ copy temperature.main_table (
 ,"spikeFailQM"
 ,"spikePassQM"
 ,"spikeNAQM"
+,"nitrateInternalHumidityPassQM"
+,"nitrateInternalHumidityFailQM"
+,"nitrateInternalHumidityNAQM"
+,"nitrateLightDarkSpectralRatioPassQM"
+,"nitrateLightDarkSpectralRatioFailQM"
+,"nitrateLightDarkSpectralRatioNAQM"
 ,"validCalFailQM"
 ,"validCalPassQM"
 ,"validCalNAQM"
@@ -85,8 +95,8 @@ copy temperature.main_table (
 ,"finalQF"
 ,"finalQFSciRvw"
 ,"publicationDate"
-,"release")
-from program
-'awk FNR-1 /project/datastuff/Temperature/TSW_*.csv'
+,"release"
+)
+from 
+'/project/datastuff/Nitrate/NSW_15_minute.csv'
 delimiter ',' csv header;
-

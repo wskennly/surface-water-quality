@@ -30,7 +30,6 @@ from
 '/project/datastuff/dissolved_gases/sdg_fieldData.csv'
 delimiter ',' csv header;
 
-
 create table if not exists dissolved_gases.sdg_fieldDataAir(
 "uid" text
 ,"domainID" text
@@ -64,7 +63,6 @@ copy dissolved_gases.sdg_fieldDataAir(
 from 
 '/project/datastuff/dissolved_gases/sdg_fieldDataAir.csv'
 delimiter ',' csv header;
-
 
 create table if not exists dissolved_gases.sdg_fieldDataProc(
 "uid" text
@@ -124,10 +122,9 @@ from
 '/project/datastuff/dissolved_gases/sdg_fieldDataProc.csv'
 delimiter ',' csv header;
 
-
 create table if not exists dissolved_gases.sdg_fieldSuperParent(
 "uid" text
-,"vdomainID" text
+,"domainID" text
 ,"siteID" text
 ,"namedLocation" text
 ,"decimalLatitude" numeric 
@@ -167,7 +164,7 @@ create table if not exists dissolved_gases.sdg_fieldSuperParent(
 
 copy dissolved_gases.sdg_fieldSuperParent(
 "uid"
-,"vdomainID"
+,"domainID"
 ,"siteID"
 ,"namedLocation"
 ,"decimalLatitude"

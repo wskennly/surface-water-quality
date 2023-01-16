@@ -19,7 +19,6 @@ create table if not exists count_microbe.amc_cellCountLabSummary(
 ,"publicationDate" text
 );
 
-
 copy count_microbe.amc_cellCountLabSummary (
 "uid"
 ,"labSpecificStartDate"
@@ -40,7 +39,6 @@ copy count_microbe.amc_cellCountLabSummary (
 )
 from '/project/datastuff/count-microbe/amc_cellCountLabSummary.csv'
 delimiter ',' csv header;
-
 
 create table if not exists count_microbe.amc_cellCounts(
 "uid" text
@@ -115,7 +113,6 @@ create table if not exists count_microbe.amc_fieldCellCounts(
 ,"publicationDate" text
 ,"release" text
 );
-
 
 copy  count_microbe.amc_fieldCellCounts(
 "uid"

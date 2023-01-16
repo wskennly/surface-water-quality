@@ -115,7 +115,6 @@ from
 '/project/datastuff/group_abund_microbe/mga_batchResults.csv'
 delimiter ',' csv header;
 
-
 create table if not exists group_abund_microbe.mga_labSummary(
 "uid" text
 ,"targetTaxonGroup" text 
@@ -146,6 +145,7 @@ create table if not exists group_abund_microbe.mga_labSummary(
 ,"dataQF" text 
 ,"publicationDate" text 
 );
+
 copy group_abund_microbe.mga_labSummary(
 "uid"
 ,"targetTaxonGroup"

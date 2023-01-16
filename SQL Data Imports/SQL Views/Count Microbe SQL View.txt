@@ -1,0 +1,38 @@
+create or replace view countmicrobe2018 as 
+select 
+date_trunc('month', m."collectDate") as month,
+m."domainID",
+m."siteID",
+avg(m."microbialAbundancePerMl")
+from mastercellcount m 
+where date_part('year',m."collectDate") = 2018
+group by month
+,m."domainID" 
+,m."siteID" 
+order by 1;
+
+create or replace view countmicrobe2019 as 
+select 
+date_trunc('month', m."collectDate") as month,
+m."domainID",
+m."siteID",
+avg(m."microbialAbundancePerMl")
+from mastercellcount m 
+where date_part('year',m."collectDate") = 2019
+group by month
+,m."domainID" 
+,m."siteID" 
+order by 1;
+
+create or replace view countmicrobe2020 as 
+select 
+date_trunc('month', m."collectDate") as month,
+m."domainID",
+m."siteID",
+avg(m."microbialAbundancePerMl")
+from mastercellcount m 
+where date_part('year',m."collectDate") = 2020
+group by month
+,m."domainID" 
+,m."siteID" 
+order by 1;

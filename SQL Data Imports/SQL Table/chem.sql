@@ -1,6 +1,5 @@
 create schema if not exists chem;
 
---
 create table if not exists chem.swc_asiPOMFieldData(
 "uid" text 
 ,"domainID" text 
@@ -48,7 +47,6 @@ copy chem.swc_asiPOMFieldData(
 from '/project/datastuff/chem/swc_asiPOMFieldData.csv'
 delimiter ',' csv header;
 
---
 create table if not exists chem.swc_domainLabData(
 "uid" text
 ,"domainID" text
@@ -107,7 +105,6 @@ copy chem.swc_domainLabData(
 from '/project/datastuff/chem/swc_domainLabData.csv'
 delimiter ',' csv header;
 
---
 create table if not exists chem.swc_externalLabDataByAnalyte(
 "uid" text
 ,"domainID" text
@@ -157,7 +154,6 @@ copy chem.swc_externalLabDataByAnalyte(
 from '/project/datastuff/chem/swc_externalLabDataByAnalyte.csv'
 delimiter ',' csv header;
 
-
 create table if not exists chem.swc_externalLabSummaryData(
 "uid" text
 ,"laboratoryName" text
@@ -204,7 +200,6 @@ copy chem.swc_externalLabSummaryData(
 from '/project/datastuff/chem/swc_externalLabSummaryData.csv'
 delimiter ',' csv header;
 
---
 create table if not exists chem.swc_fieldData(
 "uid" text
 ,"domainID" text
@@ -239,7 +234,6 @@ create table if not exists chem.swc_fieldData(
 ,"release" text
 ,"remarks" text
 );
-
 
 copy  chem.swc_fieldData(
 "uid"
@@ -277,7 +271,6 @@ copy  chem.swc_fieldData(
 )
 from '/project/datastuff/chem/swc_fieldData.csv'
 delimiter ',' csv header;
-
 
 create table if not exists chem.swc_fieldSuperParent(
 "uid"  text 
