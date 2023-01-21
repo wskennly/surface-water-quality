@@ -1,5 +1,5 @@
 !.gitignore
 
-**/__pyCache__/**
+**/__pycache__/**
 
 **/node_modules/**
