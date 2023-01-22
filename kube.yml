@@ -66,7 +66,7 @@ spec:
   - name: NodeJS
     image: docker.io/library/python:latest
     command: ["/bin/sh"]
-    args: ["-c", "apt update && apt upgrade -y && apt install npm -y && cd /project/NodeJS && npm ci && npm run build && npm run start"]
+    args: ["-c", "apt update && apt install npm -y && cd /project/NodeJS && npm ci && (npm run build & npm run start)"]
     env:
     - name: HOME
       value: /root
@@ -74,6 +74,8 @@ spec:
       value: b27f1b0463df
     - name: PORT
       value: 8000
+    - name: BROWSER
+      value: none
     resources: {}
     tty: true
     ports:
