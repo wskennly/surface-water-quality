@@ -1,26 +1,10 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import Navigator from './Navigator';
 import Content from './Content';
 import Header from './Header';
-import { usePageContext } from './PageContext';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}.
-    </Typography>
-  );
-}
 
 let theme = createTheme({
   palette: {
@@ -168,9 +152,8 @@ theme = {
 const drawerWidth = 256;
 
 export default function Paperbase() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
-  const [state, dispatch] = usePageContext();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -179,7 +162,7 @@ export default function Paperbase() {
   return (
     <ThemeProvider theme={theme}>
       <Box display="block" minHeight='100vh' >
-        
+
         <Box
           component="nav"
           sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -200,16 +183,13 @@ export default function Paperbase() {
 
         </Box>
 
-        <Box sx={{ marginLeft: 32}}>
-          <Header onDrawerToggle={handleDrawerToggle} />
+        <Box sx={{ marginLeft: { sm: 32, xs: 0 } }}>
 
-          <Box component="main" sx={{py: 6, bgcolor: '#eaeff1'}}>
+          <Header />
+
+          <Box component="main" sx={{ bgcolor: '#eaeff1' }}>
             <Content />
           </Box>
-          
-          {/* <Box component="footer" sx={{ p: 2, bgcolor: '#eaeff1' }}>
-            <Copyright />
-          </Box> */}
         </Box>
 
       </Box>

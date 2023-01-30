@@ -57,34 +57,39 @@ export default function Navigator(props) {
   const { ...other } = props;
 
   const onChildClick = (id, childId) => {
+    dispatch({type: "subheading", value: id})
     dispatch({type: "selectedNavigation", value: id});
     dispatch({type: "selectedSubnavigation", value: childId});
   }
 
   return (
     <Drawer variant="permanent" {...other}>
-      <List disablePadding>
-        {/* <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
-          Paperbase
-        </ListItem> */}
+      <List>
+
         <ListItem sx={{ ...item, ...itemCategory }}>
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
           <ListItemText>Project Overview</ListItemText>
         </ListItem>
+
         {categories.map(({ id, children }) => (
+
           <Box key={id} sx={{ bgcolor: '#101F33' }}>
+
             <ListItem sx={{ py: 2, px: 3 }}>
               <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
             </ListItem>
+
             {children.map(({ id: childId, icon }) => (
+
               <ListItem disablePadding key={childId}>
                 <ListItemButton onClick={() => onChildClick(id, childId)} sx={item}>
                   <ListItemIcon>{icon}</ListItemIcon>
                   <ListItemText>{childId}</ListItemText>
                 </ListItemButton>
               </ListItem>
+
             ))}
 
             <Divider sx={{ mt: 2 }} />
