@@ -1,11 +1,13 @@
 
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
+import Plot from "react-plotly.js"
+import { Card } from "./Content";
 
 export const INIT_STATE = {
     heading: "Surface Water Quality",
-    subheadding: "test",
-    selectedNavigation: 0,
-    selectedSubnavigation: 0,
+    subheadding: "Data",
+    selectedNavigation: "Data",
+    selectedSubnavigation: "Database",
     visibleCards: []
 }
 
@@ -19,7 +21,7 @@ export const pageReducer = (state, action) => {
             return { ...state, selectedNavigation: action.value }
         case "selectedSubnavigation":
             return { ...state, selectedSubnavigation: action.value }
-        case "addCard":
+        case "addCards":
             Array.isArray(action.value) ?
                 action.value.map(elm =>
                     state.visibleCards.push(elm)
@@ -37,6 +39,37 @@ export const PageContext = createContext(INIT_STATE);
 export const usePageContext = () => useContext(PageContext);
 export const PageContextProvider = ({ children }) => {
     const [pageState, pageDispatch] = useReducer(pageReducer, INIT_STATE);
+
+    //Should be moved to page context.
+    useEffect(
+        //Mount
+        () => {
+            pageDispatch({
+                type: "addCards", value: [
+
+                    //Ideally call a function to update the content than write all cards here
+                    <Card heading={"Data"}>
+
+                        <Plot
+                            data={[{
+                                x: [1, 2, 3],
+                                y: [2, 6, 3],
+                                type: 'scatter',
+                                mode: 'lines+markers',
+                                marker: { color: 'red' },
+                            },
+                            { type: 'bar', x: [1, 2, 3], y: [2, 5, 3] },
+                            ]}
+                            layout={{ width: '100%', height: '100%', title: 'A Fancy Plot' }}
+                        />
+
+                    </Card>
+                ]
+            })
+
+            //Unmount
+            // return () => pageDispatch({ type: "clearCards" })
+        }, []);
 
     return (
         <PageContext.Provider
