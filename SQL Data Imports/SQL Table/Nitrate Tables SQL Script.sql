@@ -1,4 +1,13 @@
+/*
+Creating schema called Neon nitrate.
+*/
+
 create schema if not exists nitrate;
+
+/*
+Creating the main table called Neon nitrate with its column 
+names in order to import Neon nitrate dataset. 
+*/
 
 create table if not exists nitrate.main_table (
 "domainID" text
@@ -48,6 +57,10 @@ create table if not exists nitrate.main_table (
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the NEON nitrate table into postgres database.
+*/
 
 copy nitrate.main_table (
 "domainID"
