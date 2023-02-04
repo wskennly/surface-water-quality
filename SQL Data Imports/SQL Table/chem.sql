@@ -1,4 +1,13 @@
+/*
+Creating schema called Chem in order to import the Water Chemistry Data.
+*/
+
 create schema if not exists chem;
+
+/*
+Creating the main table called Water Chemistry POM Field Data with its column 
+names in order to import Water Chemistry POM Field Data dataset. 
+*/
 
 create table if not exists chem.swc_asiPOMFieldData(
 "uid" text 
@@ -22,6 +31,9 @@ create table if not exists chem.swc_asiPOMFieldData(
 ,"release" text 
 );
 
+/*
+Using the copy command to import the Water Chemistry POM Field Data table into postgres database.
+*/
 
 copy chem.swc_asiPOMFieldData(
 "uid"
@@ -46,6 +58,11 @@ copy chem.swc_asiPOMFieldData(
 ) 
 from '/project/datastuff/chem/swc_asiPOMFieldData.csv'
 delimiter ',' csv header;
+
+/*
+Creating the main table called Water Chemistry Domain Lab Data with its column 
+names in order to import Water Chemistry Domain Lab Data dataset. 
+*/
 
 create table if not exists chem.swc_domainLabData(
 "uid" text
@@ -74,6 +91,10 @@ create table if not exists chem.swc_domainLabData(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Water Chemistry Domain Lab Data table into postgres database.
+*/
 
 copy chem.swc_domainLabData(
 "uid"
@@ -105,6 +126,11 @@ copy chem.swc_domainLabData(
 from '/project/datastuff/chem/swc_domainLabData.csv'
 delimiter ',' csv header;
 
+/*
+Creating the main table called Water Chemistry External Lab Data with its column 
+names in order to import Water Chemistry External Lab Data dataset. 
+*/
+
 create table if not exists chem.swc_externalLabDataByAnalyte(
 "uid" text
 ,"domainID" text
@@ -128,6 +154,10 @@ create table if not exists chem.swc_externalLabDataByAnalyte(
 ,"analysisDate" date
 ,"belowDetectionQF" text
 );
+
+/*
+Using the copy command to import the Water Chemistry External Lab Data table into postgres database.
+*/
 
 copy chem.swc_externalLabDataByAnalyte(
 "uid"
@@ -154,6 +184,11 @@ copy chem.swc_externalLabDataByAnalyte(
 from '/project/datastuff/chem/swc_externalLabDataByAnalyte.csv'
 delimiter ',' csv header;
 
+/*
+Creating the main table called Water Chemistry External Lab Summary Data with its column 
+names in order to import Water Chemistry External Lab Summary Data dataset. 
+*/
+
 create table if not exists chem.swc_externalLabSummaryData(
 "uid" text
 ,"laboratoryName" text
@@ -175,6 +210,10 @@ create table if not exists chem.swc_externalLabSummaryData(
 ,"labSpecificEndDate" date
 ,"publicationDate" text
 );
+
+/*
+Using the copy command to import the Water Chemistry External Lab Summary Data table into postgres database.
+*/
 
 copy chem.swc_externalLabSummaryData(
 "uid"
@@ -199,6 +238,11 @@ copy chem.swc_externalLabSummaryData(
 )
 from '/project/datastuff/chem/swc_externalLabSummaryData.csv'
 delimiter ',' csv header;
+
+/*
+Creating the main table called Water Chemistry SWC Field Data with its column 
+names in order to import Water Chemistry SWC Field Data dataset. 
+*/
 
 create table if not exists chem.swc_fieldData(
 "uid" text
@@ -234,6 +278,10 @@ create table if not exists chem.swc_fieldData(
 ,"release" text
 ,"remarks" text
 );
+
+/*
+Using the copy command to import the Water Chemistry SWC Field Data table into postgres database.
+*/
 
 copy  chem.swc_fieldData(
 "uid"
@@ -271,6 +319,11 @@ copy  chem.swc_fieldData(
 )
 from '/project/datastuff/chem/swc_fieldData.csv'
 delimiter ',' csv header;
+
+/*
+Creating the main table called Water Chemistry Field Super Parent Data with its column 
+names in order to import Water Chemistry Field Super Parent Data dataset. 
+*/
 
 create table if not exists chem.swc_fieldSuperParent(
 "uid"  text 
@@ -313,6 +366,10 @@ create table if not exists chem.swc_fieldSuperParent(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Water Chemistry Field Super Parent Data table into postgres database.
+*/
 
 copy  chem.swc_fieldSuperParent(
 "uid"
