@@ -1,3 +1,9 @@
+/*
+Created 3 views of the Nitrate table by year (2018, 2019, 2020), 
+we then selected the columns that we were interested in that 
+we could used for modeling.
+*/
+
 create or replace view nitrate2018 as 
 select 
 date(nt."startDateTime") as "date"
@@ -48,5 +54,3 @@ group by date
 ,nt."siteID" 
 ,nt."horizontalPosition" 
 ,nt."verticalPosition";
-
-select * from nitrate2018 n 
