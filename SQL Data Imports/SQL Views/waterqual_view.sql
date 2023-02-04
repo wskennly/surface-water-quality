@@ -1,3 +1,9 @@
+/*
+Created 3 views of the Water Quality table by year (2018, 2019, 2020), 
+we then selected the columns that we were interested in that 
+we could used for modeling.
+*/
+
 create or replace view waterquality2018 as 
 select 
 date(m."startDateTime") as "date"
@@ -72,5 +78,3 @@ group by date
 ,m."siteID" 
 ,m."horizontalPosition" 
 ,m."verticalPosition";
-
-select * from waterquality2018 w 
