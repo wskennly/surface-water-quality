@@ -1,3 +1,9 @@
+/*
+Created 3 views of the Dissolved Gases table by year (2018, 2019, 2020), 
+we then selected the columns that we were interested in that 
+we could used for modeling.
+*/
+
 create or replace view dissolvedgases2018 as 
 select
 date(se."collectDate") as date
@@ -45,6 +51,4 @@ date(se."collectDate") as date
  where date_part('year',"collectDate") = 2020
 group by date
 ,se."domainID" 
-,se."siteID" ;
-
-select * from dissolvedgases2018 d 
+,se."siteID" ; 
