@@ -1,4 +1,13 @@
+/*
+Creating schema called Dissolved Gases.
+*/
+
 create schema if not exists dissolved_gases;
+
+/*
+Creating the main table called Dissolved Gases Sdg Field Data with its column 
+names in order to import Dissolved Gases Sdg Field Data dataset. 
+*/
 
 create table if not exists dissolved_gases.sdg_fieldData(
 "uid" text
@@ -13,6 +22,10 @@ create table if not exists dissolved_gases.sdg_fieldData(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Dissolved Gases Sdg Field Data table into postgres database.
+*/
 
 copy dissolved_gases.sdg_fieldData(
 "uid"
@@ -30,6 +43,11 @@ from
 '/project/datastuff/dissolved_gases/sdg_fieldData.csv'
 delimiter ',' csv header;
 
+/*
+Creating the main table called Dissolved Gases Sdg Field Data Air with its column 
+names in order to import Dissolved Gases Sdg Field Data Air dataset. 
+*/
+
 create table if not exists dissolved_gases.sdg_fieldDataAir(
 "uid" text
 ,"domainID" text
@@ -45,6 +63,10 @@ create table if not exists dissolved_gases.sdg_fieldDataAir(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Dissolved Gases Sdg Field Data Air table into postgres database.
+*/
 
 copy dissolved_gases.sdg_fieldDataAir(
 "uid"
@@ -63,6 +85,11 @@ copy dissolved_gases.sdg_fieldDataAir(
 from 
 '/project/datastuff/dissolved_gases/sdg_fieldDataAir.csv'
 delimiter ',' csv header;
+
+/*
+Creating the main table called Dissolved Gases Sdg Field Data Proc with its column 
+names in order to import Dissolved Gases Sdg Field Data Proc dataset. 
+*/
 
 create table if not exists dissolved_gases.sdg_fieldDataProc(
 "uid" text
@@ -91,6 +118,10 @@ create table if not exists dissolved_gases.sdg_fieldDataProc(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Dissolved Gases Sdg Field Data Proc table into postgres database.
+*/
 
 copy dissolved_gases.sdg_fieldDataProc(
 "uid"
@@ -121,6 +152,11 @@ copy dissolved_gases.sdg_fieldDataProc(
 from 
 '/project/datastuff/dissolved_gases/sdg_fieldDataProc.csv'
 delimiter ',' csv header;
+
+/*
+Creating the main table called Dissolved Gases Sdg Field Super Parent with its column 
+names in order to import Dissolved Gases Sdg Field Super Parent dataset. 
+*/
 
 create table if not exists dissolved_gases.sdg_fieldSuperParent(
 "uid" text
@@ -161,6 +197,10 @@ create table if not exists dissolved_gases.sdg_fieldSuperParent(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Dissolved Gases Sdg Field Super Parent table into postgres database.
+*/
 
 copy dissolved_gases.sdg_fieldSuperParent(
 "uid"
@@ -204,6 +244,11 @@ from
 '/project/datastuff/dissolved_gases/sdg_fieldSuperParent.csv'
 delimiter ',' csv header;
 
+/*
+Creating the main table called Dissolved Gases Sdg External Lab Data with its column 
+names in order to import Dissolved Gases Sdg External Lab Data dataset. 
+*/
+
 create table if not exists dissolved_gases.sdg_externalLabData(
 "uid" text
 ,"domainID" text
@@ -240,6 +285,11 @@ create table if not exists dissolved_gases.sdg_externalLabData(
 ,"publicationDate" text
 ,"release" text
 );
+
+
+/*
+Using the copy command to import the Dissolved Gases Sdg External Lab Data table into postgres database.
+*/
 
 copy dissolved_gases.sdg_externalLabData(
 "uid"
@@ -281,6 +331,11 @@ from
 '/project/datastuff/dissolved_gases/sdg_externalLabData - Copy.csv' 
 delimiter ',' csv header;
 
+/*
+Creating the main table called Dissolved Gases Sdg External Lab Summary Data with its column 
+names in order to import Dissolved Gases Sdg External Lab Summary Data dataset. 
+*/
+
 create table if not exists dissolved_gases.sdg_externalLabSummaryData(
 "uid" text
 ,"laboratoryName" text
@@ -301,6 +356,10 @@ create table if not exists dissolved_gases.sdg_externalLabSummaryData(
 ,"dataQF" numeric
 ,"publicationDate" text
 );
+
+/*
+Using the copy command to import the Dissolved Gases Sdg External Lab Summary Data table into postgres database.
+*/
 
 copy dissolved_gases.sdg_externalLabSummaryData(
 "uid"
