@@ -1,4 +1,13 @@
+/*
+Creating schema called Count Microbe.
+*/
+
 create schema if not exists count_microbe;
+
+/*
+Creating the main table called Count Microbe AMC Cell Count Lab Summary with its column 
+names in order to import Count Microbe AMC Cell Count Lab Summary dataset. 
+*/
 
 create table if not exists count_microbe.amc_cellCountLabSummary(
 "uid" text
@@ -18,6 +27,10 @@ create table if not exists count_microbe.amc_cellCountLabSummary(
 ,"enteredBy" text
 ,"publicationDate" text
 );
+
+/*
+Using the copy command to import the Count Microbe AMC Cell Count Lab Summary table into postgres database.
+*/
 
 copy count_microbe.amc_cellCountLabSummary (
 "uid"
@@ -39,6 +52,11 @@ copy count_microbe.amc_cellCountLabSummary (
 )
 from '/project/datastuff/count-microbe/amc_cellCountLabSummary.csv'
 delimiter ',' csv header;
+
+/*
+Creating the main table called Count Microbe AMC Cell Counts with its column 
+names in order to import Count Microbe AMC Cell Counts dataset. 
+*/
 
 create table if not exists count_microbe.amc_cellCounts(
 "uid" text
@@ -66,6 +84,10 @@ create table if not exists count_microbe.amc_cellCounts(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Count Microbe AMC Cell Counts table into postgres database.
+*/
 
 copy count_microbe.amc_cellCounts(
 "uid"
@@ -95,6 +117,11 @@ copy count_microbe.amc_cellCounts(
 from '/project/datastuff/count-microbe/amc_cellCounts.csv'
 delimiter ',' csv header;
 
+/*
+Creating the main table called Count Microbe AMC Field Cell Counts Lab with its column 
+names in order to import Count Microbe AMC Field Cell Counts Lab dataset. 
+*/
+
 create table if not exists count_microbe.amc_fieldCellCounts(
 "uid" text
 ,"domainID" text
@@ -113,6 +140,10 @@ create table if not exists count_microbe.amc_fieldCellCounts(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Count Microbe AMC Field Cell Counts Lab table into postgres database.
+*/
 
 copy  count_microbe.amc_fieldCellCounts(
 "uid"
@@ -134,6 +165,11 @@ copy  count_microbe.amc_fieldCellCounts(
 )
 from '/project/datastuff/count-microbe/amc_fieldCellCounts.csv'
 delimiter ',' csv header;
+
+/*
+Creating the main table called Count Microbe AMC Field Super Parent with its column 
+names in order to import Count Microbe AMC Field Super Parent dataset. 
+*/
 
 create table if not exists count_microbe.amc_fieldSuperParent(
 "uid" text
@@ -176,6 +212,10 @@ create table if not exists count_microbe.amc_fieldSuperParent(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Count Microbe AMC Field Super Parent table into postgres database.
+*/
 
 copy count_microbe.amc_fieldSuperParent(
 "uid"
