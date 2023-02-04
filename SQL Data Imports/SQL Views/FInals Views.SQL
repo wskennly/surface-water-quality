@@ -1,3 +1,8 @@
+/*
+Created 3 views of the NWT and CDC table by year (2018, 2019, 2020), 
+to be exported to Python
+*/
+
 create or replace view nwt2018 as 
 select 
 n."date" as ndate	
@@ -195,47 +200,3 @@ dissolvedgases2020 d
 on (c."date" = d."date") and ((c."siteID" = d."siteID"))
 full join countmicrobe2020 c2 
 on (c2."date" = d."date") and ((c2."siteID" = d."siteID"));
-
-create or replace view m2018 as 
-select 
-ms."date" as msdate
-,ms."domainID" as msdomainID
-,ms."siteID" as mssiteID
-,ms."nucleicAcidConcentration" as msnucleicAcidConcentration
-,ms."targetGene" as mstargetGene
-,ms."targetTaxonGroup" as mstargetTaxonGroup
-,ms."meanCopyNumber" as msmeanCopyNumber
-,ms."copyNumberStandardDeviation" as mscopyNumberStandardDeviation
-,m."date" as mdate
-,m."domainID" as mdomainID
-,m."siteID" as msiteID
-,m."nucleicAcidConcentration" as mnucleicAcidConcentration
-,m."targetGene" as mtargetGene
-,m."targetTaxonGroup" as mtargetTaxonGroup
-,m."meanCopyNumber" as mmeanCopyNumber
-,m."copyNumberStandardDeviation" as mcopyNumberStandardDeviation 
-from
-microbe16s2018 ms full join 
-microbeits2018 m  on (ms."date" = m."date") and ((ms."siteID" = m."siteID"));
-
-create or replace view m2019 as 
-select 
-ms."date" as msdate
-,ms."domainID" as msdomainID
-,ms."siteID" as mssiteID
-,ms."nucleicAcidConcentration" as msnucleicAcidConcentration
-,ms."targetGene" as mstargetGene
-,ms."targetTaxonGroup" as mstargetTaxonGroup
-,ms."meanCopyNumber" as msmeanCopyNumber
-,ms."copyNumberStandardDeviation" as mscopyNumberStandardDeviation
-,m."date" as mdate
-,m."domainID" as mdomainID
-,m."siteID" as msiteID
-,m."nucleicAcidConcentration" as mnucleicAcidConcentration
-,m."targetGene" as mtargetGene
-,m."targetTaxonGroup" as mtargetTaxonGroup
-,m."meanCopyNumber" as mmeanCopyNumber
-,m."copyNumberStandardDeviation" as mcopyNumberStandardDeviation 
-from
-microbe16s2019 ms full join 
-microbeits2019 m  on (ms."date" = m."date") and ((ms."siteID" = m."siteID"));
