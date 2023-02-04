@@ -1,3 +1,9 @@
+/*
+Created 3 views of the Chem table by year (2018, 2019, 2020), 
+we then selected the columns that we were interested in that 
+we could used for modeling.
+*/
+
 create or replace view chem2018 as 
 select 
 date(se."startDate") as date
@@ -30,5 +36,3 @@ date(se."startDate") as date
 ,concat(se."analyteConcentration",', ' ,se."analyteUnits") as "analyteCon"
 from chem.swc_externallabdatabyanalyte se
  where date_part('year',se."startDate" ) = 2020;
- 
-select * from chem2018 c 
