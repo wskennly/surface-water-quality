@@ -1,4 +1,13 @@
+/*
+Creating schema called Temperature.
+*/
+
 create schema if not exists temperature;
+
+/*
+Creating the main table called Temperature Main Table with its column 
+names in order to import Temperature Main Table dataset. 
+*/
 
 create table if not exists temperature.main_table(
 "domainID" text
@@ -43,6 +52,9 @@ create table if not exists temperature.main_table(
 ,"release" text
 );
 
+/*
+Using the copy command to import the Temperature main table into postgres database.
+*/
 
 copy temperature.main_table (
 "domainID"
