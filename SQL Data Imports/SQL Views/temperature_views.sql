@@ -1,3 +1,9 @@
+/*
+Created 3 views of the Temp table by year (2018, 2019, 2020), 
+we then selected the columns that we were interested in that 
+we could used for modeling.
+*/
+
 create or replace view temp2018 as 
 select 
 date(t."startDateTime") as "date"
@@ -48,5 +54,3 @@ group by date
 ,t."siteID" 
 ,t."horizontalPosition" 
 ,t."verticalPosition";
-
-select * from temp2018 t;
