@@ -1,4 +1,13 @@
+/*
+Creating schema called Water Quality.
+*/
+
 create schema if not exists water_quality;
+
+/*
+Creating the main table called Water Quality Main Table with its column 
+names in order to import Water Quality Main Table dataset. 
+*/
 
 create table if not exists  water_quality.maintable (
 "domainID" text
@@ -153,6 +162,10 @@ create table if not exists  water_quality.maintable (
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Water Quality Main Table into postgres database.
+*/
 
 copy water_quality.maintable(
 "domainID" 
