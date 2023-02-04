@@ -1,4 +1,13 @@
+/*
+Creating schema called Group Abund Microbe.
+*/
+
 create schema if not exists group_abund_microbe;
+
+/*
+Creating the main table called Group Abund Microbe MGA_SW Group Abundances with its column 
+names in order to import Group Abund Microbe MGA_SW Group Abundances dataset. 
+*/
 
 create table if not exists group_abund_microbe.mga_swGroupAbundances(
 "uid" text
@@ -30,6 +39,10 @@ create table if not exists group_abund_microbe.mga_swGroupAbundances(
 ,"publicationDate" text
 ,"release" text
 );
+
+/*
+Using the copy command to import the Group Abund Microbe MGA_SW Group Abundances table into postgres database.
+*/
 
 copy group_abund_microbe.mga_swGroupAbundances(
 "uid"
@@ -63,6 +76,11 @@ copy group_abund_microbe.mga_swGroupAbundances(
 from '/project/datastuff/group_abund_microbe/mga_swGroupAbundances.csv'
 delimiter ',' csv header;
 
+/*
+Creating the main table called Group Abund Microbe MGA Batch Results with its column 
+names in order to import Group Abund Microbe MGA Batch Results dataset. 
+*/
+
 create table if not exists group_abund_microbe.mga_batchResults(
 "uid" text
 ,"laboratoryName" text
@@ -87,6 +105,10 @@ create table if not exists group_abund_microbe.mga_batchResults(
 ,"dataQF" numeric
 ,"publicationDate" text
 );
+
+/*
+Using the copy command to import the Group Abund Microbe MGA Batch Results  table into postgres database.
+*/
 
 copy group_abund_microbe.mga_batchResults(
 "uid"
@@ -114,6 +136,11 @@ copy group_abund_microbe.mga_batchResults(
 from 
 '/project/datastuff/group_abund_microbe/mga_batchResults.csv'
 delimiter ',' csv header;
+
+/*
+Creating the main table called Group Abund Microbe MGA Lab Summary with its column 
+names in order to import Group Abund Microbe MGA Lab Summary dataset. 
+*/
 
 create table if not exists group_abund_microbe.mga_labSummary(
 "uid" text
@@ -145,6 +172,10 @@ create table if not exists group_abund_microbe.mga_labSummary(
 ,"dataQF" text 
 ,"publicationDate" text 
 );
+
+/*
+Using the copy command to import the Group Abund Microbe MGA Lab Summary table into postgres database.
+*/
 
 copy group_abund_microbe.mga_labSummary(
 "uid"
