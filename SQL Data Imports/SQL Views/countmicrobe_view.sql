@@ -1,3 +1,8 @@
+/*
+Created the Master Cell Count view in order to create Microbial Abundance Per Ml views Formula.
+The Formula was found in the Neon PDF documentation.
+*/
+
 create or replace view masterCellCount as 
 select 
 ac."domainID"
@@ -11,6 +16,11 @@ ac."domainID"
 ,((ac."rawMicrobialAbundance" * (fcc."cellCountSampleVolume" + fcc."cellCountPreservantVolume") / fcc."cellCountSampleVolume")) as "microbialAbundancePerMl"
 from count_microbe.amc_fieldCellCounts fcc 
 full join count_microbe.amc_cellcounts ac on fcc."cellCountSampleID" = ac."cellCountSampleID";
+
+/*
+Created 3 Count Microbe views table by year (2018, 2019, 2020), 
+we then selected the columns that we were interested in that we could used for modeling.
+*/
 
 create or replace view countmicrobe2018 as 
 select 
@@ -50,5 +60,3 @@ group by date
 ,m."domainID" 
 ,m."siteID" 
 order by 1;
-
-select * from countmicrobe2018 c 
