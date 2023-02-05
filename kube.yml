@@ -66,7 +66,7 @@ spec:
   - name: NodeJS
     image: docker.io/library/python:latest
     command: ["/bin/sh"]
-    args: ["-c", "apt update && apt install npm -y && cd /project/NodeJS && npm ci && (npm run build & npm run start)"]
+    args: ["-c", "apt update -o Acquire::Max-FutureTime=31536000 && apt install npm -y && cd /project/NodeJS && npm ci && (npm run build & npm run start)"]
     env:
     - name: HOME
       value: /root
