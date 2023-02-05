@@ -1,48 +1,49 @@
 import { AppBar, Toolbar, Typography, Paper, Grid } from '@mui/material';
 import { usePageContext } from './PageContext';
-import "./util/jupyter_css.css";
 
-export const Card = ({ heading, children }) => (
+export const Card = ({ heading, align, children }) => (
   <Paper>
 
     <AppBar
       position="static"
       color="default"
       elevation={0}
-      sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.12)' }}
+      sx={{ borderRadius: 1, borderBottomLeftRadius: 0, borderBottomRightRadius: 0, borderBottom: '1px solid rgba(0, 0, 0, 0.12)', overflowX: "auto" }}
     >
-      <Toolbar>
-        <Grid container spacing={2}>
-          <Grid item xs>
-            <Typography color="text.secondary" align="center">
+      {/* <Toolbar> */}
+        <Grid container>
+          <Grid item xs sx={{m : 1}}>
+            {/* <Typography color="text.secondary" align={align ?? "center"}> */}
               {heading}
-            </Typography>
+            {/* </Typography> */}
           </Grid>
         </Grid>
-      </Toolbar>
+      {/* </Toolbar> */}
     </AppBar>
 
-    {(Array.isArray(children) ? children : [children]).map(
-      child =>
-        <Grid container justifyContent="center">
-          {child}
-        </Grid>
-    )}
+    <Grid container >
+      {(Array.isArray(children) ? children : [children]).map(
+        child =>
+          <Grid item sx={{ m: 1, overflowX: "auto" }}>
+            {child}
+          </Grid>
+      )}
+    </Grid>
 
   </Paper>
 )
 
-export default function Content() {
+export default () => {
   const [state, dispatch] = usePageContext();
 
   return (
     <Grid container direction="column"
-      sx={{ py: 3, overflow: 'hidden' }}
+      sx={{ p: 3, overflow: 'hidden' }}
       spacing={2}
-      alignContent="center"
+      justifyContent="center"
     >
       {state.visibleCards.map(card => (
-        <Grid item>
+        <Grid item style={{ maxWidth: "100%" }}>
           {card}
         </Grid>
       ))}
