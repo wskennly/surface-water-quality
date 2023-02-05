@@ -187,7 +187,7 @@ export default function Paperbase() {
 
           <Header />
 
-          <Box component="main" sx={{ bgcolor: '#eaeff1' }}>
+          <Box component="main" alignContent="center" alignItems="center" justifyContent="center" sx={{ bgcolor: '#eaeff1'}}>
             <Content />
           </Box>
         </Box>
