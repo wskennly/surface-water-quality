@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Typography, Paper, Grid } from '@mui/material';
 import { usePageContext } from './PageContext';
+import "./util/jupyter_css.css";
 
 export const Card = ({ heading, children }) => (
   <Paper>
