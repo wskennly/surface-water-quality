@@ -1,12 +1,10 @@
 
-import { createContext, useContext, useReducer, useEffect } from "react";
-import { Card } from "./Content";
-import { getTitleBodyPairs } from "./util/parse_jupyter_html";
+import { createContext, useContext, useReducer } from "react";
 export const INIT_STATE = {
 	heading: "Surface Water Quality",
-	subheadding: "Data",
-	selectedNavigation: "Data",
-	selectedSubnavigation: "Database",
+	subheadding: "",
+	selectedNavigation: "",
+	selectedSubnavigation: "",
 	visibleCards: []
 }
 
@@ -17,9 +15,9 @@ export const pageReducer = (state, action) => {
 		case "subheading":
 			return { ...state, subheadding: action.value }
 		case "selectedNavigation":
-			return { ...state, selectedNavigation: action.value }
+			return { ...state, selectedNavigation: action.value.toLowerCase() }
 		case "selectedSubnavigation":
-			return { ...state, selectedSubnavigation: action.value }
+			return { ...state, selectedSubnavigation: action.value.toLowerCase() }
 		case "addCards":
 			Array.isArray(action.value) ?
 				action.value.map(elm =>
@@ -37,32 +35,6 @@ export const PageContext = createContext(INIT_STATE);
 export const usePageContext = () => useContext(PageContext);
 export const PageContextProvider = ({ children }) => {
 	const [pageState, pageDispatch] = useReducer(pageReducer, INIT_STATE);
-
-	useEffect(
-		//Mount
-		() => {
-
-			const pairs = getTitleBodyPairs("Surfacewater_XGB.html");
-
-			pairs.then(pairs => {
-
-				pageDispatch({
-					type: "addCards", value: [
-						...pairs.map(p => {
-
-							return (
-								<Card align="left" heading={<div dangerouslySetInnerHTML={{ __html: p.title.outerHTML }} />} >
-									<div dangerouslySetInnerHTML={{ __html: p.body?.outerHTML }} />
-								</Card>
-							)
-						}),
-					]
-				})
-			})
-
-			//Unmount
-			return () => pageDispatch({ type: "clearCards" })
-		}, []);
 
 	return (
 		<PageContext.Provider
