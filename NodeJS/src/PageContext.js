@@ -5,7 +5,6 @@ export const INIT_STATE = {
 	subheadding: "",
 	selectedNavigation: "",
 	selectedSubnavigation: "",
-	visibleCards: []
 }
 
 export const pageReducer = (state, action) => {
@@ -18,14 +17,6 @@ export const pageReducer = (state, action) => {
 			return { ...state, selectedNavigation: action.value.toLowerCase() }
 		case "selectedSubnavigation":
 			return { ...state, selectedSubnavigation: action.value.toLowerCase() }
-		case "addCards":
-			Array.isArray(action.value) ?
-				action.value.map(elm =>
-					state.visibleCards.push(elm)
-				) : state.visibleCards.push(action.value);
-			return { ...state }
-		case "clearCards":
-			return { ...state, visibleCards: [] }
 		default:
 			throw "Illegal Type for Reducer";
 	}
