@@ -14,7 +14,7 @@ export default () => {
   //Display page based on selected navigation
   return (
     <Grid container direction="column"
-      sx={{ p: 3, minHeight: "100vh"}}
+      sx={{ p: 3, minHeight: "calc(100vh - 80px)"}}
       spacing={2}
       justifyContent="center"
     >
