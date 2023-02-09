@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect } from 'react';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -12,7 +12,7 @@ import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
 import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import TimerIcon from '@mui/icons-material/Timer';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { usePageContext } from './PageContext';
+import { usePageContext } from '../PageContext';
 
 const categories = [
   {
@@ -57,10 +57,16 @@ export default function Navigator(props) {
   const { ...other } = props;
 
   const onChildClick = (id, childId) => {
-    dispatch({type: "subheading", value: id})
-    dispatch({type: "selectedNavigation", value: id});
-    dispatch({type: "selectedSubnavigation", value: childId});
+    dispatch({ type: "subheading", value: id + " - " + childId})
+    dispatch({ type: "selectedNavigation", value: id });
+    dispatch({ type: "selectedSubnavigation", value: childId });
   }
+
+  useEffect(() => {
+    dispatch({ type: "subheading", value: categories[0].id + " - " + categories[0].children[0].id})
+    dispatch({ type: "selectedNavigation", value: categories[0].id });
+    dispatch({ type: "selectedSubnavigation", value: categories[0].children[0].id });
+  }, [])
 
   return (
     <Drawer variant="permanent" {...other}>
