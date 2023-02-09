@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
-import Navigator from './Navigator';
-import Content from './Content';
-import Header from './Header';
+import Navigator from './components/Navigator';
+import Content from './pages/Content';
+import Header from './components/Header';
 
 let theme = createTheme({
   palette: {
