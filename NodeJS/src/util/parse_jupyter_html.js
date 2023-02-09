@@ -9,16 +9,30 @@ export const getTitleBodyPairs = fileName =>
 
 		return Cell.map((t, idx) => {
 
-			var headding = [...t.getElementsByClassName("jp-InputArea")][0]
-			var body = [...t.getElementsByClassName("jp-OutputArea")][0]
+			var headding = [...t.getElementsByClassName("jp-InputArea")][0];
+			var body = [...t.getElementsByClassName("jp-OutputArea")][0];
 
 			return ({
-				title: headding,
+				title: cleanupCell(headding, idx),
 				body: cleanupCell(body)
 			})
 		});
 	});
 
-export const cleanupCell = cell => {
+export const cleanupCell = (cell, idx) => {
+
+	if (cell == null) return null;
+
+	//Process indivisually
+	if (Array.isArray(cell))
+		return cell.map(c => cleanupCell(c))
+
+	//Remove number from Notebook
+	const elements = [...cell.getElementsByClassName("jp-InputPrompt"), ...cell.getElementsByClassName("jp-OutputPrompt")]
+	elements.map(e => {
+		if (idx) e.parentNode.insertBefore(document.createTextNode(idx), e);
+		e.parentNode.removeChild(e);
+	})
+
 	return cell;
 }
