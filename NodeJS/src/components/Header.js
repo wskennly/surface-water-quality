@@ -4,7 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Grid from '@mui/material/Grid';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { usePageContext } from './PageContext';
+import { usePageContext } from '../PageContext';
 
 function Header() {
   const [state, dispatch] = usePageContext();
