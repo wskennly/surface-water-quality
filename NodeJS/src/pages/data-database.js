@@ -18,23 +18,26 @@ export default () => {
         , [])
 
     return (
-        <Grid container direction="column"
+        <Grid container
             spacing={2}
             justifyContent="center"
         >
             {
                 loading
-                    ? <Grid item style={{ margin: "auto"}}>
+                    ? <Grid item style={{ margin: "auto" }}>
                         <CircularProgress />
                     </Grid>
-                    : // Design your page from here
-                    data.map(p => (
-                        <Grid item style={{ maxWidth: "100%" }}>
-                            <Card align="left" heading={<div dangerouslySetInnerHTML={{ __html: p.title.outerHTML }} />} >
-                                <div dangerouslySetInnerHTML={{ __html: p.body?.outerHTML }} />
-                            </Card>
-                        </Grid>
-                    ))
+                    :
+                    // Design your page from here
+                    <>
+                        {data.map(p => (
+                            <Grid item style={{ width: "100%" }}>
+                                <Card align="left" heading={p.title} >
+                                    {p.body}
+                                </Card>
+                            </Grid>
+                        ))}
+                    </>
             }
         </Grid>
     )
